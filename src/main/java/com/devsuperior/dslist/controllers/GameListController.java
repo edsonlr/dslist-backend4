@@ -38,7 +38,7 @@ public class GameListController {
 		return result;
 	}
 	
-	@PostMapping(value = "/{listId}/replacement")
+	@GetMapping(value = "/{listId}/replacement")
 	public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
 		gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
 	}
