@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dslist.dto.GameListDTO;
@@ -17,7 +19,7 @@ import com.devsuperior.dslist.services.GameListService;
 import com.devsuperior.dslist.services.GameService;
 
 @RestController
-@RequestMapping(value = "/lists")
+@RequestMapping(value = "/lists" , method = { RequestMethod.GET, RequestMethod.POST })
 public class GameListController {
 
 	@Autowired
@@ -38,7 +40,7 @@ public class GameListController {
 		return result;
 	}
 	
-	@PutMapping(value = "/{listId}/replacement")
+	@PostMapping(value = "/{listId}/replacement")
 	public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
 		gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
 	}
