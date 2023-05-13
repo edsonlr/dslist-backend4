@@ -19,7 +19,7 @@ import com.devsuperior.dslist.services.GameListService;
 import com.devsuperior.dslist.services.GameService;
 
 @RestController
-@RequestMapping(value = "/lists" , method = { RequestMethod.GET, RequestMethod.POST })
+@RequestMapping(value = "/lists")
 public class GameListController {
 
 	@Autowired
